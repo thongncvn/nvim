@@ -1,0 +1,5 @@
+require('colorscheme')
+require('tree')
+require('mappings')
+require('statusline')
+require('dot').setup()
