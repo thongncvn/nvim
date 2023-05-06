@@ -2,6 +2,7 @@ require('colorscheme')
 require('tree')
 require('mappings')
 require('statusline')
+require('lsp')
 require('dot').setup()
 
 vim.o.tabstop = 2
