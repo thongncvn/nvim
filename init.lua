@@ -1,4 +1,5 @@
 require("colorscheme")
+require("search")
 require("tree")
 require("mappings")
 require("statusline")
