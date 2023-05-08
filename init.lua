@@ -1,9 +1,11 @@
-require('colorscheme')
-require('tree')
-require('mappings')
-require('statusline')
-require('lsp')
-require('dot').setup()
+require("colorscheme")
+require("search")
+require("tree")
+require("mappings")
+require("statusline")
+require("lsp")
+require("terminal")
+require("dot").setup()
 
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
