@@ -44,5 +44,6 @@ require("dot").use({
 		})
 
 		vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
+		vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { silent = true })
 	end,
 })
