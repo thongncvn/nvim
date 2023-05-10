@@ -1,57 +1,60 @@
 require("dot").use({
-	"williamboman/mason.nvim",
-	requires = {
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-		"jose-elias-alvarez/null-ls.nvim",
-		"nvim-lua/plenary.nvim",
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-nvim-lsp",
-	},
-	config = function()
-		local cmp = require("cmp")
-		cmp.setup({
-			completion = {
-				completeopt = "menu,menuone,noinsert",
-			},
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-			}),
-			mapping = cmp.mapping.preset.insert({
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<Tab>"] = cmp.mapping.select_next_item(),
-				["<S-Tab>"] = cmp.mapping.select_prev_item(),
-			}),
-		})
+  "williamboman/mason.nvim",
+  requires = {
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    "jose-elias-alvarez/null-ls.nvim",
+    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+  },
+  config = function()
+    local cmp = require("cmp")
+    cmp.setup({
+      completion = {
+        completeopt = "menu,menuone,noinsert",
+      },
+      sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+      }),
+      mapping = cmp.mapping.preset.insert({
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+      }),
+    })
 
-		require("mason").setup()
-		require("mason-lspconfig").setup()
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				local capabilities = require("cmp_nvim_lsp").default_capabilities()
-				require("lspconfig")[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-		})
+    require("mason").setup()
+    require("mason-lspconfig").setup()
+    require("mason-lspconfig").setup_handlers({
+      function(server_name)
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        require("lspconfig")[server_name].setup({
+          capabilities = capabilities,
+        })
+      end,
+    })
 
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettierd,
-			},
-		})
+    local null_ls = require("null-ls")
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettierd,
+      },
+    })
 
-		vim.api.nvim_create_user_command("LspFormat", function()
-			vim.lsp.buf.format()
-		end, { desc = "Format the document" })
+    vim.api.nvim_create_user_command("LspFormat", function()
+      vim.lsp.buf.format()
+    end, { desc = "Format the document" })
+    vim.api.nvim_create_user_command("LspGoToDefinition", function()
+      vim.lsp.buf.definition()
+    end, { desc = "Go to definition" })
+    vim.api.nvim_create_user_command("LspCodeAction", function()
+      vim.lsp.buf.code_action()
+    end, { desc = "Show code actions" })
 
-		vim.api.nvim_create_user_command("LspGoToDefinition", function()
-			vim.lsp.buf.definition()
-		end, { desc = "Go to definition" })
-
-		vim.keymap.set("n", "gd", "<cmd>LspGoToDefinition<cr>", { silent = true })
+    vim.keymap.set("n", "gd", "<cmd>LspGoToDefinition<cr>", { silent = true })
     vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { silent = true })
-	end,
+    vim.keymap.set("n", "<C-.>", "<cmd>LspCodeAction<cr>", { silent = true })
+  end,
 })
