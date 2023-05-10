@@ -43,7 +43,15 @@ require("dot").use({
 			},
 		})
 
-		vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
-		vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { silent = true })
+		vim.api.nvim_create_user_command("LspFormat", function()
+			vim.lsp.buf.format()
+		end, { desc = "Format the document" })
+
+		vim.api.nvim_create_user_command("LspGoToDefinition", function()
+			vim.lsp.buf.definition()
+		end, { desc = "Go to definition" })
+
+		vim.keymap.set("n", "gd", "<cmd>LspGoToDefinition<cr>", { silent = true })
+    vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { silent = true })
 	end,
 })
