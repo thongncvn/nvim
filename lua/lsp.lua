@@ -52,5 +52,6 @@ require("dot").use({
 		end, { desc = "Go to definition" })
 
 		vim.keymap.set("n", "gd", "<cmd>LspGoToDefinition<cr>", { silent = true })
+    vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { silent = true })
 	end,
 })
