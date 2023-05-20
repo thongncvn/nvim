@@ -40,6 +40,7 @@ require("dot").use({
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.diagnostics.eslint_d,
       },
     })
 
@@ -55,6 +56,6 @@ require("dot").use({
 
     vim.keymap.set("n", "gd", "<cmd>LspGoToDefinition<cr>", { silent = true })
     vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { silent = true })
-    vim.keymap.set("n", "<C-.>", "<cmd>LspCodeAction<cr>", { silent = true })
+    vim.keymap.set("n", "<leader>.", "<cmd>LspCodeAction<cr>", { silent = true })
   end,
 })
