@@ -1,5 +1,6 @@
 require("colorscheme")
 require("search")
+require("colorize")
 require("tree")
 require("statusline")
 require("lsp")
