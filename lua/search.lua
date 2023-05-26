@@ -18,8 +18,12 @@ require("dot").use({
 
 		-- TODO: Move this to mappings.lua in a more clever way?
 		local builtin = require("telescope.builtin")
+
+		require("dot").command("SearchText", "Search for text", "<leader>F", function()
+			builtin.live_grep(require("telescope.themes").get_ivy())
+		end)
+
 		vim.keymap.set("n", "<leader>p", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>F", builtin.live_grep, {})
 		vim.keymap.set("n", "<leader>P", builtin.commands, {})
 	end,
 })
