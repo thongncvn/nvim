@@ -6,8 +6,13 @@ require("dot").use({
 			commentStyle = { italic = false },
 			keywordStyle = { italic = false },
 		})
+	end,
+})
 
-		vim.cmd([[colorscheme kanagawa]])
+require("dot").use({
+	"olimorris/onedarkpro.nvim",
+	config = function()
+		vim.cmd([[colorscheme onedark]])
 	end,
 })
 
