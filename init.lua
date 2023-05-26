@@ -15,5 +15,6 @@ vim.o.expandtab = true
 vim.o.smartindent = false
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.wo.wrap = false
 
 vim.g.mapleader = " "
