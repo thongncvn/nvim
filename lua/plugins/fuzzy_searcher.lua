@@ -4,6 +4,10 @@ return {
   config = function()
     require('fzf-lua').setup({
       'default',
+      -- Đăng ký FzfLua làm UI handler cho code actions, etc (tắt warning)
+      fzf_opts = {
+        ['--layout'] = 'reverse',
+      },
       winopts = {
         fullscreen = true,
         preview = {
@@ -33,6 +37,9 @@ return {
         color_icons = true,
       },
     })
+
+    -- Đăng ký FzfLua làm UI handler global (code actions, rename, etc)
+    require('fzf-lua').register_ui_select()
 
     -- Key mappings
     vim.keymap.set('n', '<leader>p', '<cmd>FzfLua files<cr>', { desc = 'Find files' })

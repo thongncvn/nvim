@@ -24,6 +24,11 @@ vim.opt.termguicolors = true
 vim.opt.cmdheight = 0
 vim.opt.linebreak = true
 
+-- Line numbers
+vim.opt.number = true         -- Hiển thị số dòng
+vim.opt.relativenumber = true -- Số dòng tương đối (relative)
+vim.opt.signcolumn = "yes"    -- Luôn hiển thị cột dấu (không bị nhảy khi có lỗi)
+
 -- Tab settings: use 2 spaces
 vim.opt.tabstop = 2       -- Number of spaces a tab counts for
 vim.opt.shiftwidth = 2    -- Number of spaces for auto-indent
