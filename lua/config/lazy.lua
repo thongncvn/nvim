@@ -45,4 +45,21 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
+  ui = {
+    icons = {
+      cmd = ">",
+      config = "@",
+      event = "!",
+      ft = "T",
+      init = ".",
+      keys = "k",
+      plugin = "*",
+      runtime = "r",
+      require = "&",
+      source = "-",
+      start = "^",
+      task = "#",
+      lazy = "z",
+    },
+  },
 })
