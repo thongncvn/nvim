@@ -24,7 +24,7 @@ return {
       files = {
         prompt = 'Files❯ ',
         multiprocess = true,
-        git_icons = true,
+        git_icons = false,
         file_icons = true,
         color_icons = true,
       },
@@ -32,7 +32,7 @@ return {
         prompt = 'Rg❯ ',
         input_prompt = 'Grep For❯ ',
         multiprocess = true,
-        git_icons = true,
+        git_icons = false,
         file_icons = true,
         color_icons = true,
       },
