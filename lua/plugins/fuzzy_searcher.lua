@@ -1,6 +1,5 @@
 return {
   'ibhagwan/fzf-lua',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('fzf-lua').setup({
       'default',
@@ -25,16 +24,16 @@ return {
         prompt = 'Files❯ ',
         multiprocess = true,
         git_icons = false,
-        file_icons = true,
-        color_icons = true,
+        file_icons = false,
+        color_icons = false,
       },
       grep = {
         prompt = 'Rg❯ ',
         input_prompt = 'Grep For❯ ',
         multiprocess = true,
         git_icons = false,
-        file_icons = true,
-        color_icons = true,
+        file_icons = false,
+        color_icons = false,
       },
     })
 
